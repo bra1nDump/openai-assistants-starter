@@ -5,6 +5,7 @@
   "scripts": {
     "start": "wrangler dev",
     "deploy": "wrangler deploy",
+    "pretest": "npm run build",
     "test": "vitest",
     "----dev---": "section for debugging the cloud fare locally",
     "build": "npx esbuild --bundle --target=esnext --format=esm --sourcemap --outdir=build src/index.ts",

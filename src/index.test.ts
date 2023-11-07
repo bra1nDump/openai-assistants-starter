@@ -1,25 +1,33 @@
-import { unstable_dev } from "wrangler";
-import type { UnstableDevWorker } from "wrangler";
 import { describe, expect, it, beforeAll, afterAll } from "vitest";
 
-describe("Worker", () => {
-	let worker: UnstableDevWorker;
+/**
+ * These tests assume you are running the compound launch.json in VSCode
+ * that starts the Worker and runs these tests.
+ * You can set breakpoints in both!
+ */
+describe("Assistant can reply", () => {
+	beforeAll(async () => {
+		// We need to wait a bit to let the worker start
+		await new Promise((resolve) => setTimeout(resolve, 2_000));
+	})
 
 	beforeAll(async () => {
-		worker = await unstable_dev("src/index.ts", {
-			experimental: { disableExperimentalWarning: true },
+		// TODO: Check the server is running run /health or something
+	});
+
+	it("I can get the assistant to say Hi to me", async () => {
+		const response = await fetch("http://localhost:8787/threads", {
+			method: "POST",
 		});
-	});
+		const threadJSON: any = await response.json();
+		const threadId = threadJSON.threadId;
 
-	afterAll(async () => {
-		await worker.stop();
-	});
+		const assistantResponse = await fetch(`http://localhost:8787/threads/${threadId}/messages`, {
+			method: "POST",
+			body: 'Hi there! (Respond with just a "Hi", its a test message)',
+		});
+		const assistantResponseText = await assistantResponse.text();
 
-	it("should return Hello World", async () => {
-		const resp = await worker.fetch();
-		if (resp) {
-			const text = await resp.text();
-			expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-		}
+		expect(assistantResponseText).toBe("Hi");
 	});
 });

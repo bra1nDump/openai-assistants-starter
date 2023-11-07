@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Dev",
+            "name": "Worker",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run",
@@ -17,8 +17,32 @@
                 "${workspaceFolder}/build/**/*.js",
                 "${workspaceFolder}/build/**/*.js.map"
             ],
-            "outputCapture": "std",
-            "console": "integratedTerminal",
         },
+        // Have a joined launch 
+        // Run tests (tests don't need debugging)
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "test"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/build/**/*.js",
+                "${workspaceFolder}/build/**/*.js.map"
+            ],
+        },
+    ],
+    "compounds": [
+        {
+            "name": "Debug Worker while running tests",
+            "configurations": [
+                "Worker",
+                "Test"
+            ],
+            "stopAll": true
+        }
     ]
 }
