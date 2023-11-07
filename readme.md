@@ -1,4 +1,4 @@
-# Simple Cloudfare Worker to get you started with OpenAI Assistants
+# Starter project for openai.beta apis
 
 This project it's great if you want to build an assistant using openai.beta.assistans API and don't want to deal with the boilerplate setup. Hope you build something with this!
 
