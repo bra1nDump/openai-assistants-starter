@@ -29,6 +29,7 @@
                 "run",
                 "test"
             ],
+            "console": "integratedTerminal",
             "outFiles": [
                 "${workspaceFolder}/build/**/*.js",
                 "${workspaceFolder}/build/**/*.js.map"
