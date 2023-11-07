@@ -41,6 +41,8 @@ router.post(
     let assistant = (await openai.beta.assistants.list()).data.find(
       (a) => a.name === ASSISTANT_NAME
     );
+
+    // If the assistant doesn't exist, create it
     if (!assistant) {
       assistant = await openai.beta.assistants.create({
         name: ASSISTANT_NAME,

@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "wrangler dev",
-    "deploy": "wrangler deploy",
+    "----[comment] build is automatically run (see wrangler.toml)----": "",
+    "build": "npx esbuild --bundle --target=esnext --format=esm --sourcemap --outdir=build src/index.ts",
+    "----[comment] miniflare 3 has no breakpoints----": "https://miniflare.dev/get-started/migrating#missing-features",
+    "start": "npx miniflare --modules build/index.js --watch --debug --wrangler-config wrangler.toml",
     "pretest": "npm run build",
     "test": "vitest",
-    "----dev---": "section for debugging the cloud fare locally",
-    "build": "npx esbuild --bundle --target=esnext --format=esm --sourcemap --outdir=build src/index.ts",
-    "----wrangler 3 dev does not support breakpoints----": "https://miniflare.dev/get-started/migrating#missing-features",
-    "dev": "npx miniflare --modules build/index.js --watch --debug --wrangler-config wrangler.toml"
+    "----[comment] you need to be logged in to Cloudfare to run this command----": "",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "itty-router": "^4.0.23",
