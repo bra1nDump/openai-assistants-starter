@@ -1,9 +1,12 @@
 import { describe, expect, it, beforeAll, afterAll } from "vitest";
 
+// Large to be able to breakpoint without the test timing out
+const timeout = 20_000_000
+
 /**
  * These tests assume you are running the compound launch.json in VSCode
  * that starts the Worker and runs these tests.
- * You can set breakpoints in both!
+ * You can set breakpoints in the worker only, more setup needed with vitest to work with breakpoints.
  */
 describe("Assistant can reply", () => {
   beforeAll(async () => {
@@ -30,6 +33,8 @@ describe("Assistant can reply", () => {
     const assistantResponseText = await assistantResponse.text();
 
     expect(assistantResponseText).toBe("Hi");
+  }, {
+    timeout
   });
 
   // Makes sure it actually uses the tool
@@ -51,6 +56,6 @@ describe("Assistant can reply", () => {
 
     expect(assistantResponseText).toBe((num1 + num2).toString());
   }, {
-    timeout: 20_000,
+    timeout
   });
 });
