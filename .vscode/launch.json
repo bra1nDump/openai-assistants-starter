@@ -37,7 +37,7 @@
     ],
     "compounds": [
         {
-            "name": "Debug Worker while running tests",
+            "name": "Worker + Test",
             "configurations": [
                 "Worker",
                 "Test"
