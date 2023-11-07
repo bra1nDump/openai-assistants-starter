@@ -1,3 +1,0 @@
-name = "openai-assistants-cloudfare-worker-boilerplate"
-main = "src/index.ts"
-compatibility_date = "2023-11-07"

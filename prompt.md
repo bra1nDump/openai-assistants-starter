@@ -1,8 +1,12 @@
 Write me a typescript cloudfare worker that will use openai.beta assistant, threads and runs to create an example assistant and run it.
 
 The worker well expose a single hardcoded assistant, to which you can submit messages.
-At will exposed two endpoints:
 
+# Libraries to use
+- Use a popular router library used with cloudfare workers.
+- Use the openai node library to interact with the openai APIs - don't submit http requests directly, use the library.
+
+# Two endpoints the worker will expose:
 POST /threads
 It will simply return an idea of the thread created
 
@@ -20,7 +24,10 @@ If the assistant is not created, it will create it with hardcoded parameters and
 
 ## Message submission
 
-This is the tricky one, let's start coding up a assistant without custom tools to start with.
+This is the tricky one, let's start coding up a assistant without custom tools to start with
+For each message we will block the response until we get a response from the assistant.
+That will require calling the APIs multiple times, PAY ATTENTION TO PLAYGROUND ASSISTANT LOGS, they will tell you what to do.
+Annotate your code with comments.
 
-Use the documentation in [](./assistants-documentation/) to use the openai node apis.
-Use the [playground assistants log](./assistants-documentation/playground%20assistants%20log.md) to understand how to sequence the calls.
+Use the documentation in [](./assistants-documentation) to use the openai node apis.
+Use the [playground assistants log](<./assistants-documentation/playground assistants log.md>) to understand how to sequence the calls.

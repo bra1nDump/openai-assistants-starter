@@ -1,19 +1,26 @@
 {
   "name": "openai-assistants-cloudfare-worker-boilerplate",
   "version": "0.0.0",
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231025.0",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.6",
-    "wrangler": "3.15.0"
-  },
   "private": true,
   "scripts": {
     "start": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "vitest"
+    "test": "vitest",
+    "----dev---": "section for debugging the cloud fare locally",
+    "build": "npx esbuild --bundle --target=esnext --format=esm --sourcemap --outdir=build src/index.ts",
+    "----wrangler 3 dev does not support breakpoints----": "https://miniflare.dev/get-started/migrating#missing-features",
+    "dev": "npx miniflare --modules build/index.js --watch --debug --wrangler-config wrangler.toml"
   },
   "dependencies": {
+    "itty-router": "^4.0.23",
     "openai": "^4.16.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231025.0",
+    "esbuild": "^0.19.5",
+    "miniflare": "^2.10.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "wrangler": "3.15.0"
   }
 }

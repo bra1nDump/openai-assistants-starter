@@ -1,0 +1,9 @@
+name = "openai-assistants-cloudfare-worker-boilerplate"
+main = "build/index.js"
+compatibility_date = "2023-11-07"
+
+[build]
+command = "npm run build"
+
+[vars]
+OPENAI_API_KEY = "<TODO: YOU SHOULD INSERT YOUR OPENAI API KEY HERE>"
