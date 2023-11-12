@@ -1,6 +1,8 @@
-# Starter project for openai.beta apis
+# beta openai example: assistants + threads + runs
 
-This project it's great if you want to build an assistant using openai.beta.assistans API and don't want to deal with the boilerplate setup. Hope you build something with this!
+- TypeScript
+- Cloudflare Workers
+- OpenAI node.js SDK
 
 ## This project includes:
 - VSCode debugging with breakpoints for both the worker and the unit tests
@@ -20,11 +22,6 @@ This project it's great if you want to build an assistant using openai.beta.assi
 2. Copy `wrangler.example.toml` to `wrangler.toml` and fill in the OpenAI API key
 3. Assuming you are using VSCode, press F5 to start the worker
    1. You can also select `Worker + Test` to run the unit tests and see the worker in action (all breakpoitable!)
-
-## Stack
-- TypeScript
-- Cloudflare Workers
-- OpenAI node.js SDK
 
 ## Other goodies
 I have included assistant-documentation that you can simply paste into chatgpt to answer any questions about the new beta.assistants API. I have actually used this to build the initial version of the code.
